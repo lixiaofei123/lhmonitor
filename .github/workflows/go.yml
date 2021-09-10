@@ -21,9 +21,12 @@ jobs:
     - name: Build
       run: go build -o main && zip main.zip main PingFang.ttc
     
-    - uses: "marvinpinto/action-automatic-releases@latest"
+    - name: Publish
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        title: "Development Build"
         prerelease: false
         files: main.zip
       
