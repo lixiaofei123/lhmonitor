@@ -1,3 +1,5 @@
+[![Go](https://github.com/lixiaofei123/lhmonitor/actions/workflows/go.yml/badge.svg?branch=master)](https://github.com/lixiaofei123/lhmonitor/actions/workflows/go.yml)
+
 ### 一个简单的用腾讯云函数监控轻量服务器流量自动关机开机的程序
 
 **目前支持的特性有**

@@ -20,10 +20,11 @@ jobs:
 
     - name: Build
       run: go build -o main && zip main.zip main PingFang.ttc
-    - name: Upload zip file
-      uses: actions/upload-artifact@v2
+    
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: main.zip
-        path: main.zip
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: main.zip
       
     
