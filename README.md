@@ -10,11 +10,18 @@
 
 **高颜值通知**
 
-![短信通知](./images/sms.jpg)
+短信通知
 
-![邮箱通知](./images/email.png)
+<img src="./images/sms.jpg" alt="drawing" width="300"/>
 
-![企业微信通知](./images/qiyeweixin.png)
+邮件通知
+
+<img src="./images/email.png" alt="drawing" width="300"/>
+
+企业微信通知
+
+<img src="./images/qiyeweixin.png" alt="drawing" width="300"/>
+
 
 **使用方法**
 
