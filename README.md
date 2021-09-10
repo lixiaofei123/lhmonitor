@@ -12,15 +12,15 @@
 
 短信通知
 
-<img src="./images/sms.jpg" alt="drawing" width="300"/>
+<img src="./images/sms.jpg" alt="短信通知" width="300"/>
 
 邮件通知
 
-<img src="./images/email.png" alt="drawing" width="300"/>
+![邮件通知](./images/email.png)
 
 企业微信通知
 
-<img src="./images/qiyeweixin.png" alt="drawing" width="300"/>
+<img src="./images/qiyeweixin.png" alt="企业微信通知" width="300"/>
 
 
 **使用方法**
