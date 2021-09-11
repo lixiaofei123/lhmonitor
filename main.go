@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"log"
 	"os"
 	"strconv"
 	"time"
@@ -63,7 +62,7 @@ func run(ctx context.Context) (string, error) {
 	bin := NewLHBin()
 	instances, err := bin.ListInstances()
 	if err != nil {
-		log.Panicf(err.Error())
+		return err.Error(), err
 	}
 
 	events := []*notifier.Event{}
@@ -78,7 +77,7 @@ func run(ctx context.Context) (string, error) {
 						// 执行关机操作
 						_, err := bin.StopInstance(instance.Region, instance.InstanceId)
 						if err != nil {
-							return "", err
+							return err.Error(), err
 						}
 						events = append(events, &notifier.Event{
 							Name:   instance.InstanceName,
@@ -93,7 +92,7 @@ func run(ctx context.Context) (string, error) {
 						// 执行开机操作
 						_, err := bin.StartInstance(instance.Region, instance.InstanceId)
 						if err != nil {
-							return "", err
+							return err.Error(), err
 						}
 						events = append(events, &notifier.Event{
 							Name:   instance.InstanceName,
@@ -118,7 +117,14 @@ func run(ctx context.Context) (string, error) {
 		}
 	}
 
-	notifier.SendMessage(noticeType, events)
+	errors := notifier.SendMessage(noticeType, events)
+	if len(errors) != 0 {
+		var errStr string
+		for _, err := range errors {
+			errStr = errStr + ";" + err.Error()
+		}
+		return errStr, errors[0]
+	}
 
 	return "", nil
 }

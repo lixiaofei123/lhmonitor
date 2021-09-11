@@ -116,11 +116,15 @@ func registerNotifier(name string, notifier Notifier) {
 	notifiers[name] = &notifier
 }
 
-func SendMessage(notifyType string, events []*Event) error {
+func SendMessage(notifyType string, events []*Event) []error {
+	errors := []error{}
 	for name, notifier := range notifiers {
 		if strings.Contains(notifyType, name) {
-			(*notifier).SendMessage(events)
+			err := (*notifier).SendMessage(events)
+			if err != nil {
+				errors = append(errors, err)
+			}
 		}
 	}
-	return nil
+	return errors
 }
